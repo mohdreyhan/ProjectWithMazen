@@ -1,0 +1,42 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Project1",
+      "task": 5
+    },
+    {
+      "id": 2,
+      "name": "Project2",
+      "task": 6
+ 
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Task1",
+      "assignedTo": "Reyhan",
+      "status": "In progress"
+
+    },
+    {
+      "id": 2,
+      "name": "Task2",
+      "assignedTo": "Mazen",
+      "status": "Open"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Reyhan",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "name": "Mazen",
+      "status": "Active"
+    }
+  ]
+}
