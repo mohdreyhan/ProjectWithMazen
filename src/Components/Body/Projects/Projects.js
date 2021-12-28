@@ -1,11 +1,14 @@
 import React from "react";
+import { Container, Button } from "react-bootstrap";
 import ProjectTable from "./ProjectTable";
+import CreateProject from "./CreateProject.js";
 
 class Projects extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       projectsData: [],
+      showModal : false
     };
   }
 
@@ -21,10 +24,22 @@ class Projects extends React.Component {
     await this.getProjects();
   }
 
+  handleModal = () => {
+    this.setState({
+      showModal : !this.state.showModal
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
       <ProjectTable projectsData ={this.state.projectsData} />
+      <Container>
+      <Button onClick = {this.handleModal}>Create Project</Button>
+      </Container>
+      <CreateProject 
+      showModal = {this.state.showModal } 
+      handleModal = {this.handleModal} />
       </React.Fragment>
     );
   }

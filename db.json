@@ -3,12 +3,12 @@
     {
       "id": 1,
       "name": "Project1",
-      "task": 5
+      "taskCount": 5
     },
     {
       "id": 2,
       "name": "Project2",
-      "task": 6
+      "taskCount": 6
  
     }
   ],
@@ -31,11 +31,13 @@
     {
       "id": 1,
       "name": "Reyhan",
+      "taskCount" : 3,
       "status": "Active"
     },
     {
       "id": 2,
       "name": "Mazen",
+      "taskCount" : 4,
       "status": "Active"
     }
   ]

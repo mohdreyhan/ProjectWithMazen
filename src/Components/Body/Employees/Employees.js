@@ -1,16 +1,29 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-
+import EmployeeTable from "./EmployeeTable.js";
 class Employees extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      employeeData: [],
+    };
+  }
+
+  getEmployees = async () => {
+    const results = await fetch("http://localhost:3000/employees");
+    const jsonResults = await results.json();
+    this.setState({
+      employeeData: jsonResults,
+    });
+  };
+
+  async componentDidMount() {
+    await this.getEmployees();
   }
 
   render() {
     return (
       <React.Fragment>
-        <Container>This is our Employees Page</Container>
+        <EmployeeTable employeeData = {this.state.employeeData} />
       </React.Fragment>
     );
   }

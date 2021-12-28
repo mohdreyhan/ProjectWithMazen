@@ -1,15 +1,15 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
 
-class ProjectTable extends React.Component {
+class TaskTable extends React.Component {
   render() {
-    const projectsData = this.props.projectsData;
+    const taskData = this.props.taskData;
     return (
       <React.Fragment>
         <Container>
           <Table striped bordered hover>
             <TableHeader />
-            <TableBody projectsData={projectsData} />
+            <TableBody taskData={taskData} />
           </Table>
         </Container>
       </React.Fragment>
@@ -22,25 +22,26 @@ const TableHeader = () => {
     <thead>
       <tr>
         <th>SNO</th>
-        <th>Project Name</th>
-        <th>Task Count</th>
+        <th>Task Name</th>
+        <th>Assigned To</th>
+        <th>Status</th>
       </tr>
     </thead>
   );
 };
 
 const TableBody = (props) => {
-  console.log("table body", props.projectsData);
-  const results = props.projectsData.map((value, index) => {
+  const results = props.taskData.map((value, index) => {
     return (
       <tr key={index}>
         <td>{index + 1}</td>
         <td>{value.name}</td>
-        <td>{value.taskCount}</td>
+        <td>{value.assignedTo}</td>
+        <td>{value.status}</td>
       </tr>
     );
   });
   return <tbody>{results}</tbody>;
 };
 
-export default ProjectTable;
+export default TaskTable;
