@@ -39,7 +39,8 @@ class Projects extends React.Component {
       </Container>
       <CreateProject 
       showModal = {this.state.showModal } 
-      handleModal = {this.handleModal} />
+      handleModal = {this.handleModal}
+      getProjects = {this.getProjects} />
       </React.Fragment>
     );
   }

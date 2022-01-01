@@ -9,7 +9,31 @@
       "id": 2,
       "name": "Project2",
       "taskCount": 6
- 
+    },
+    {
+      "name": "New Project",
+      "taskCount": "0",
+      "id": 3
+    },
+    {
+      "name": "New Project 1",
+      "taskCount": "10",
+      "id": 4
+    },
+    {
+      "name": "New Project 2",
+      "taskCount": "12",
+      "id": 5
+    },
+    {
+      "name": "New Project 3",
+      "taskCount": "123456",
+      "id": 6
+    },
+    {
+      "name": "New Project 4",
+      "taskCount": "0",
+      "id": 7
     }
   ],
   "tasks": [
@@ -18,7 +42,6 @@
       "name": "Task1",
       "assignedTo": "Reyhan",
       "status": "In progress"
-
     },
     {
       "id": 2,
@@ -31,13 +54,13 @@
     {
       "id": 1,
       "name": "Reyhan",
-      "taskCount" : 3,
+      "taskCount": 3,
       "status": "Active"
     },
     {
       "id": 2,
       "name": "Mazen",
-      "taskCount" : 4,
+      "taskCount": 4,
       "status": "Active"
     }
   ]

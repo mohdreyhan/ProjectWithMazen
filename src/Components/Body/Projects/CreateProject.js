@@ -4,12 +4,42 @@ import { Container, Form, Button, Modal } from "react-bootstrap";
 class CreateProject extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      formData : []
+    };
+  }
+
+  handleChange = (event) => {
+    const name = event.target.name
+    const value = event.target.value
+    this.setState({
+      formData : {...this.state.formData, [name] : value}
+    })
+  } 
+
+  handleSubmit = async (event,getProjects) => {
+    console.log("iam here")
+    event.preventDefault();
+    const results = await fetch("http://localhost:3000/projects" , {
+      method : "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name : this.state.formData.name,
+        taskCount : this.state.formData.taskCount
+      })
+    });
+    if(results.status == 201) {
+      getProjects();
+    }
   }
 
   render() {
-      const showModal = this.props.showModal
-      const handleModal = this.props.handleModal
+    const showModal = this.props.showModal;
+    const handleModal = this.props.handleModal;
+    const getProjects = this.props.getProjects
     return (
       <React.Fragment>
         <Container>
@@ -19,15 +49,25 @@ class CreateProject extends React.Component {
             </Modal.Header>
             <Modal.Body>
               {" "}
-              <Form>
+              <Form  onSubmit  = {(event)=>this.handleSubmit(event,getProjects)}>
                 <Form.Group className="mb-3">
                   <Form.Label>Project Name</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Project Name" />
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    placeholder="Enter Project Name"
+                    onChange ={this.handleChange}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                   <Form.Label>Task Count</Form.Label>
-                  <Form.Control type="text" placeholder="Enter Task count" />
+                  <Form.Control
+                    type= "number"
+                    name="taskCount"
+                    placeholder="Enter Task count"
+                    onChange ={this.handleChange}
+                  />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
@@ -38,9 +78,6 @@ class CreateProject extends React.Component {
             <Modal.Footer>
               <Button variant="secondary" onClick={handleModal}>
                 Close
-              </Button>
-              <Button variant="primary" onClick={handleModal}>
-                Save Changes
               </Button>
             </Modal.Footer>
           </Modal>
