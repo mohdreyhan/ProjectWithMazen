@@ -33,9 +33,10 @@ class Projects extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <ProjectTable projectsData ={this.state.projectsData} />
+      <ProjectTable projectsData ={this.state.projectsData}
+      getProjects = {this.getProjects} />
       <Container>
-      <Button onClick = {this.handleModal}>Create Project</Button>
+      <Button  variant="primary" onClick = {this.handleModal}>Create Project</Button>
       </Container>
       <CreateProject 
       showModal = {this.state.showModal } 

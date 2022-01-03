@@ -1,7 +1,7 @@
 import React from "react";
-import { Container, Form, Button, Modal } from "react-bootstrap";
+import { Container, Form, Modal, Button } from "react-bootstrap";
 
-class CreateProject extends React.Component {
+class UpdateProject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,17 +10,18 @@ class CreateProject extends React.Component {
   }
 
   handleChange = (event) => {
+    console.log(event.target.value)
     const name = event.target.name
     const value = event.target.value
     this.setState({
       formData : {...this.state.formData, [name] : value}
     })
-  } 
+  }
 
-  handleSubmit = async (event,getProjects) => {
+  handleSubmit = async (event,getProjects,recordToUpdate) => {
     event.preventDefault();
-    const results = await fetch("http://localhost:3000/projects" , {
-      method : "POST",
+    const results = await fetch("http://localhost:3000/projects/" + recordToUpdate, {
+      method : "PATCH",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
         Accept: "application/json",
@@ -30,25 +31,26 @@ class CreateProject extends React.Component {
         taskCount : this.state.formData.taskCount
       })
     });
-    if(results.status == 201) {
+    if(results.status == 200) {
       getProjects();
     }
   }
 
   render() {
-    const showModal = this.props.showModal;
-    const handleModal = this.props.handleModal;
-    const getProjects = this.props.getProjects
+      const showModal = this.props.showModal;
+      const handleModal = this.props.handleModal;
+      const getProjects = this.props.getProjects;
+      const recordToUpdate =this.props.recordToUpdate;
     return (
-      <React.Fragment>
+        <React.Fragment>
         <Container>
           <Modal show={showModal} onHide={handleModal}>
             <Modal.Header closeButton>
-              <Modal.Title>Create Project</Modal.Title>
+              <Modal.Title>Update Project</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               {" "}
-              <Form  onSubmit  = {(event)=>this.handleSubmit(event,getProjects)}>
+              <Form onSubmit = {(event) => this.handleSubmit(event,getProjects,recordToUpdate)}>
                 <Form.Group className="mb-3">
                   <Form.Label>Project Name</Form.Label>
                   <Form.Control
@@ -86,4 +88,4 @@ class CreateProject extends React.Component {
   }
 }
 
-export default CreateProject;
+export default UpdateProject;
