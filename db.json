@@ -1,46 +1,5 @@
 {
-  "projects": [
-    {
-      "id": 1,
-      "name": "project with mazen",
-      "taskCount": "11"
-    },
-    {
-      "id": 2,
-      "name": "project-abcd",
-      "taskCount": "121212"
-    },
-    {
-      "name": "fgjtyjytj",
-      "taskCount": "2121",
-      "id": 3
-    },
-    {
-      "name": "New Project 1",
-      "taskCount": "10",
-      "id": 4
-    },
-    {
-      "name": "New Project 2",
-      "taskCount": "12",
-      "id": 5
-    },
-    {
-      "name": "New Project 3",
-      "taskCount": "123456",
-      "id": 6
-    },
-    {
-      "name": "New Project 4",
-      "taskCount": "0",
-      "id": 7
-    },
-    {
-      "name": "project with mazen",
-      "taskCount": "3",
-      "id": 8
-    }
-  ],
+  "projects": [],
   "tasks": [
     {
       "id": 1,

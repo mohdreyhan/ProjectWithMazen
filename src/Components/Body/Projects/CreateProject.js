@@ -25,10 +25,7 @@ class CreateProject extends React.Component {
         "Content-Type": "application/json; charset=UTF-8",
         Accept: "application/json",
       },
-      body: JSON.stringify({
-        name : this.state.formData.name,
-        taskCount : this.state.formData.taskCount
-      })
+      body: JSON.stringify(this.state.formData)
     });
     if(results.status == 201) {
       getProjects();
